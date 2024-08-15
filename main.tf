@@ -25,7 +25,11 @@ resource "volterra_k8s_cluster" "example" {
     insecure_registries = ["example.com:5000"]
   }
   // One of the arguments from this list "no_local_access local_access_config" must be set
-  no_local_access = true
+  // no_local_access = true
+  local_access_config {
+    local_domain = "k8s.local"
+    default_port = true
+  }
   // One of the arguments from this list "use_default_psp use_custom_psp_list" must be set
   use_default_psp = true
 }
